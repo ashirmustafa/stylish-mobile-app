@@ -1,5 +1,5 @@
-import { useRouter } from "expo-router";
-import React from "react";
+import { useNavigation, useRouter } from "expo-router";
+import React, { useEffect } from "react";
 import {
   Image,
   SafeAreaView,
@@ -12,6 +12,11 @@ import {
 
 const Login = () => {
   const expoRouter = useRouter();
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    navigation.setOptions({ headerShown: false });
+  }, [navigation]);
   return (
     <SafeAreaView>
       <View className="px-10">

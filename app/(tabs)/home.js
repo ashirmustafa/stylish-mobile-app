@@ -83,7 +83,10 @@ const Home = () => {
                         keyExtractor={(item, index) => index.toString()}
                         renderItem={({ item }) => {
                             return (
-                                <TouchableOpacity className="mr-5">
+                                <TouchableOpacity className="mr-5" onPress={()=>{
+                                    expoRouter.navigate('../shop')
+                                    console.log('dsadsadsadsa');
+                                }}>
                                     <Image source={require('../../assets/beauty.png')} />
                                     <Text className="text-center">{item.label}</Text>
                                 </TouchableOpacity>
