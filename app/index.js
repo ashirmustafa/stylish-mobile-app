@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
 import SplashScreen from './splashScreen';
 import { useNavigation } from 'expo-router';
+import Checkout from './checkout';
 
 const Index = () => {
     const navigation = useNavigation();
@@ -10,7 +11,8 @@ const Index = () => {
         navigation.setOptions({ headerShown: false });
     }, [navigation]);
     return (
-        <SplashScreen />
+        // <SplashScreen />
+        <Checkout />
     );
 }
 

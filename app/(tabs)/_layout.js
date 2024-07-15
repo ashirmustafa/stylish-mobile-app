@@ -61,7 +61,6 @@ const Layout = () => {
                     </View>
                 )
             }} />
-
         </Tabs>
     );
 }

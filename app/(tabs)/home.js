@@ -302,7 +302,7 @@ const Home = () => {
                         </View>
                         <TouchableOpacity
                             className="bg-transparent border-[1px] border-white rounded-lg py-2 w-[100px] rounded-s"
-                            onPress={() => expoRouter.navigate("/home")}
+                            onPress={() => expoRouter.navigate('../shop')}
                         >
                             <Text className="text-xs font-semibold text-white text-center" style={{ fontFamily: "Montserrat-SemiBold" }}>
                                 View All {`>`}
@@ -324,10 +324,10 @@ const Home = () => {
                         renderItem={({ item }) => {
                             return (
                                 <Animated.View
-                                    
+
                                     className="justify-center items-center relative w[142px]"
                                 >
-                                    <TouchableOpacity className="w-[170px] h-[241px] rounded-lg overflow-hidden mx-2">
+                                    <TouchableOpacity className="w-[170px] h-[241px] rounded-lg overflow-hidden mx-2" onPress={() => expoRouter.navigate('../shop')}>
                                         <Image source={require('../../assets/kurta.png')} />
                                         <View className=" bg-white p-2 rounded-b-lg">
                                             <Text className=" font-bold" style={{ fontFamily: "Montserrat-SemiBold" }}>
