@@ -1,8 +1,39 @@
 import { useRouter } from 'expo-router';
 import React, { useRef, useState } from 'react';
 import { FlatList, Image, SafeAreaView, StyleSheet, Text, TextInput, View, Animated, Dimensions, TouchableOpacity, ImageBackground, ScrollView } from 'react-native';
-
+import { MaterialIcons } from '@expo/vector-icons';
+import StarRating from 'react-native-star-rating-widget';
 const categoriesData = [
+    {
+        label: 'Beauty',
+        imgSrc: require('../../assets/beauty.png')
+    },
+    {
+        label: 'Fashion',
+        imgSrc: require('../../assets/beauty.png')
+    },
+    {
+        label: 'Kids',
+        imgSrc: require('../../assets/beauty.png')
+    },
+    {
+        label: 'Mens',
+        imgSrc: require('../../assets/beauty.png')
+    },
+    {
+        label: 'Womens',
+        imgSrc: require('../../assets/beauty.png')
+    },
+    {
+        label: 'Animals',
+        imgSrc: require('../../assets/beauty.png')
+    },
+    {
+        label: 'Fish',
+        imgSrc: require('../../assets/beauty.png')
+    },
+]
+const arrowCarouselData = [
     {
         label: 'Beauty',
         imgSrc: require('../../assets/beauty.png')
@@ -34,6 +65,10 @@ const categoriesData = [
 ]
 const saleData = [1, 2, 3];
 const { height, width } = Dimensions.get("window");
+
+const screenWidth = Dimensions.get('window').width;
+
+const itemWidth = screenWidth / 2;
 const Home = () => {
     const expoRouter = useRouter();
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -83,7 +118,7 @@ const Home = () => {
                         keyExtractor={(item, index) => index.toString()}
                         renderItem={({ item }) => {
                             return (
-                                <TouchableOpacity className="mr-5" onPress={()=>{
+                                <TouchableOpacity className="mr-5" onPress={() => {
                                     expoRouter.navigate('../shop')
                                     console.log('dsadsadsadsa');
                                 }}>
@@ -182,7 +217,75 @@ const Home = () => {
                         </TouchableOpacity>
                     </View>
                 </View>
-                <View className="px-5 mt-4">
+                <View className="mt-5 ">
+                    <Animated.FlatList
+                        ref={ref}
+                        data={arrowCarouselData}
+                        horizontal={true}
+                        showsHorizontalScrollIndicator={false}
+                        onScroll={(e) => {
+                            const x = e.nativeEvent.contentOffset.x;
+                            setCurrentIndex(Math.round(x / itemWidth)); // Adjust the index calculation
+                        }}
+                        renderItem={({ item }) => {
+                            return (
+                                <Animated.View
+                                    style={{ width: itemWidth }} // Set the item width to half screen width
+                                    className="justify-center items-center relative"
+                                >
+                                    <TouchableOpacity className="w-[170px] h-[241px] rounded-lg overflow-hidden">
+                                        <Image source={require('../../assets/kurta.png')} />
+                                        <View className=" bg-white p-2 rounded-b-lg">
+                                            <Text className=" font-bold" style={{ fontFamily: "Montserrat-SemiBold" }}>
+                                                HRX by Hrithik Roshan
+                                            </Text>
+                                            <Text className=" text-[10px] mt-1" style={{ fontFamily: "Montserrat-Regular" }}>
+                                                Neque porro quisquam est qui dolorem ipsum quia
+                                            </Text>
+                                            <Text className=" text-xs font-bold mt-1" style={{ fontFamily: "Montserrat-Regular" }}>
+                                                ₹1500
+                                            </Text>
+                                            <View className="flex-row mt-1">
+                                                <StarRating
+                                                    starStyle={{
+                                                        marginHorizontal: -1
+                                                    }}
+                                                    rating={4.5}
+                                                    starSize={14}
+                                                    emptyColor='#bbbbbb'
+                                                />
+                                                <Text className="text-[10px] text-[#A4A9B3]"> 45,674</Text>
+                                            </View>
+                                        </View>
+                                    </TouchableOpacity>
+                                </Animated.View>
+                            );
+                        }}
+                        keyExtractor={(item, index) => index.toString()}
+                    />
+                    <View className="absolute right-8 top-[35%]">
+                        <View
+                            className="flex-row justify-between items-center mb-5"
+                        >
+
+                            <TouchableOpacity
+                                className="bg-[#BBBBBB] p-3 rounded-full"
+                                onPress={() => {
+                                    if (currentIndex < categoriesData.length - 1) {
+                                        setCurrentIndex(currentIndex + 1);
+                                        ref.current.scrollToIndex({
+                                            animated: true,
+                                            index: parseInt(currentIndex) + 1,
+                                        });
+                                    }
+                                }}
+                            >
+                                <MaterialIcons name="arrow-forward-ios" size={24} color="black" />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </View>
+                <View className="px-5 my-4">
                     <View className="flex-row bg-white rounded-lg p-3">
                         <Image source={require('../../assets/specialOffers.png')} />
                         <View className="max-w-[171px] ml-4">
@@ -208,6 +311,74 @@ const Home = () => {
                     </View>
                 </View>
 
+                <View className="mt-5 px-5">
+                    <Animated.FlatList
+                        ref={ref}
+                        data={arrowCarouselData}
+                        horizontal={true}
+                        showsHorizontalScrollIndicator={false}
+                        onScroll={(e) => {
+                            const x = e.nativeEvent.contentOffset.x;
+                            setCurrentIndex(Math.round(x / itemWidth)); // Adjust the index calculation
+                        }}
+                        renderItem={({ item }) => {
+                            return (
+                                <Animated.View
+                                    
+                                    className="justify-center items-center relative w[142px]"
+                                >
+                                    <TouchableOpacity className="w-[170px] h-[241px] rounded-lg overflow-hidden mx-2">
+                                        <Image source={require('../../assets/kurta.png')} />
+                                        <View className=" bg-white p-2 rounded-b-lg">
+                                            <Text className=" font-bold" style={{ fontFamily: "Montserrat-SemiBold" }}>
+                                                HRX by Hrithik Roshan
+                                            </Text>
+                                            <Text className=" text-[10px] mt-1" style={{ fontFamily: "Montserrat-Regular" }}>
+                                                Neque porro quisquam est qui dolorem ipsum quia
+                                            </Text>
+                                            <Text className=" text-xs font-bold mt-1" style={{ fontFamily: "Montserrat-Regular" }}>
+                                                ₹1500
+                                            </Text>
+                                            <View className="flex-row mt-1">
+                                                <StarRating
+                                                    starStyle={{
+                                                        marginHorizontal: -1
+                                                    }}
+                                                    rating={4.5}
+                                                    starSize={14}
+                                                    emptyColor='#bbbbbb'
+                                                />
+                                                <Text className="text-[10px] text-[#A4A9B3]"> 45,674</Text>
+                                            </View>
+                                        </View>
+                                    </TouchableOpacity>
+                                </Animated.View>
+                            );
+                        }}
+                        keyExtractor={(item, index) => index.toString()}
+                    />
+                    <View className="absolute right-8 top-[35%]">
+                        <View
+                            className="flex-row justify-between items-center mb-5"
+                        >
+
+                            <TouchableOpacity
+                                className="bg-[#BBBBBB] p-3 rounded-full"
+                                onPress={() => {
+                                    if (currentIndex < categoriesData.length - 1) {
+                                        setCurrentIndex(currentIndex + 1);
+                                        ref.current.scrollToIndex({
+                                            animated: true,
+                                            index: parseInt(currentIndex) + 1,
+                                        });
+                                    }
+                                }}
+                            >
+                                <MaterialIcons name="arrow-forward-ios" size={24} color="black" />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </View>
 
                 <View className="px-5 my-4">
                     <View className="rounded-lg overflow-hidden">
