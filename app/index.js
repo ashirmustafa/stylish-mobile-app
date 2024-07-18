@@ -4,6 +4,8 @@ import SplashScreen from './splashScreen';
 import { useNavigation } from 'expo-router';
 import Checkout from './checkout';
 import PlaceOrder from './placeOrder';
+import Shipping from './shipping';
+import WishList from './(tabs)/wishList';
 
 const Index = () => {
     const navigation = useNavigation();
@@ -13,7 +15,7 @@ const Index = () => {
     }, [navigation]);
     return (
         // <SplashScreen />
-        <PlaceOrder />
+        <WishList />
     );
 }
 
