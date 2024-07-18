@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import SplashScreen from './splashScreen';
 import { useNavigation } from 'expo-router';
 import Checkout from './checkout';
+import PlaceOrder from './placeOrder';
 
 const Index = () => {
     const navigation = useNavigation();
@@ -12,7 +13,7 @@ const Index = () => {
     }, [navigation]);
     return (
         // <SplashScreen />
-        <Checkout />
+        <PlaceOrder />
     );
 }
 

@@ -164,7 +164,7 @@ export default function Shop() {
                                         starSize={18}
                                         emptyColor='#bbbbbb'
                                     />
-                                    <Text className="text-[14px] text-[#A4A9B3]"> 45,674</Text>
+                                    <Text cla ssName="text-[14px] text-[#A4A9B3]">45,674</Text>
                                 </View>
                                 <View className="flex-row gap-3 mt-1">
                                     <Text className="line-through text-[#A4A9B3]">₹2,999</Text>
